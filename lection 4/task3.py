@@ -7,7 +7,10 @@
 # 4 --> 4
 
 def sum_digits(num):
-    # Здесь нужно написать код
+    our_sum = 0
+    while num != 0:
+        our_sum += num % 10
+        num = num//10
     return our_sum
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
