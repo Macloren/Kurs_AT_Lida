@@ -19,7 +19,17 @@
 
 
 def everything_for_your_cat(cats_data):
-    # Здесь нужно написать код
+    our_str = ''
+    dict_cat = {}
+    for cat in cats_data:
+        key = cat[2] + ' ' + cat[3]
+        if key in dict_cat:
+            dict_cat[key] += '; '
+        else:
+            dict_cat[key] = ''
+        dict_cat[key] += cat[0] + ', ' + str(cat[1])
+    for item in dict_cat.items():
+        our_str += item[0] + ': ' + item[1] + '\n'
     return our_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
