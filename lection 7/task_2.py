@@ -21,7 +21,38 @@
 # т.к. буква "т" встречается 4 раза, "а" 3 раза, 'о' 2 раза, остальные по одной. Сумма трёх самых частых букв 4+3+2 = 9.
 # 1337*32*9 = 385056
 
-# Здесь пишем код
+from collections import Counter
+
+
+class PersonInfo:
+    def __init__(self, full_name: str, age: int, *department: str):
+        self.full_name = full_name
+        self.age = age
+        self.department = department
+
+    def short_name(self):
+        """
+        Возвращает имя в сокращенном формате "Фамилия И."
+        """
+        name, surname = self.full_name.split()
+        return f'{surname} {name[0]}.'
+
+    def path_deps(self):
+        """
+        Возвращает путь "Головное подразделение --> ... --> Конечное подразделение"
+        """
+        return ' --> '.join(self.department)
+
+    def new_salary(self):
+        """
+        Вычисляет новое значение заработной платы по формуле
+        1337*Возраст*суммарное кол-во вхождений трех наиболее часто встречающихся букв из списка подразделений
+        """
+        department_str = ''.join(self.department)
+        counter_department_str = Counter(department_str)
+        frequent_element = sorted(counter_department_str.values())[-3:]
+        salary = 1337 * self.age * sum(frequent_element)
+        return salary
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 

@@ -10,6 +10,41 @@
 
 # Здесь пишем код
 
+class RomanNums:
+    def __init__(self, val):
+        self.roman = val
+
+    def from_roman(self):
+        """
+        Возвращает арабское число, соответствующее римской записи
+        """
+        roman_digits = {
+            'I': 1, 'IV': 4, 'V': 5, 'IX': 9, 'X': 10, 'XL': 40, 'L': 50, 'XC': 90, 'C': 100, 'CD': 400, 'D': 500,
+            'CM': 900, 'M': 1000
+        }
+        it = 0
+        result = 0
+        number_size = len(self.roman)
+        while it < number_size:
+            digit = 0
+            if it+1 < number_size:
+                digit = roman_digits.get(self.roman[it:it+2], 0)
+            if digit > 0:
+                result += digit
+                it += 1
+            else:
+                result += roman_digits.get(self.roman[it], 0)
+            it += 1
+        return result
+
+    def is_palindrome(self):
+        """
+        Проверяет, является ли арабская запись числа палиндромом
+        """
+        digit = self.from_roman()
+        return str(digit) == str(digit)[::-1]
+
+
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
 

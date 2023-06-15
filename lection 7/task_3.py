@@ -24,6 +24,62 @@
 # У класса должно быть СВОЙСТВО how_long, которое вычисляет время прохождения маршрута по формуле max_speed/(4*path)
 
 # Здесь пишем код
+class PublicTransport:
+    def __init__(self, brand, engine_power, year, color, max_speed):
+        self.brand = brand
+        self._engine_power = engine_power
+        self.year = year
+        self.color = color
+        self.max_speed = max_speed
+
+    @property
+    def info(self):
+        """
+        Выводит на печать информацию о марке, цвете, годе выпуска и мощности двигателя
+        """
+        print(f'1. {self.brand} - Марка транспорта\n\
+2. {self._engine_power} - Мощность двигателя\n\
+3. {self.year} - Год выпуска\n\
+4. {self.color} - Цвет\n\
+5. {self.max_speed} - Максимальная скорость')
+
+
+class Bus(PublicTransport):
+    def __init__(self, brand, engine_power, year, color, max_speed, passengers, park, fare):
+        super(Bus, self).__init__(brand, engine_power, year, color, max_speed)
+        self.passengers = passengers
+        self.__park = park
+        self._fare = fare
+
+    @property
+    def park(self):
+        """
+        Возвращает парк приписки автобуса
+        """
+        return self.__park
+
+    @park.setter
+    def park(self, number):
+        """
+        Присваивает заданный номер парка (если он в диапазоне от 1000 до 9999)
+        """
+        assert 1000 <= number <= 9999
+        self.__park = number
+
+
+class Tram(PublicTransport):
+    def __init__(self, brand, engine_power, year, color, max_speed, route, path, fare):
+        super(Tram, self).__init__(brand, engine_power, year, color, max_speed)
+        self.__route = route
+        self.path = path
+        self._fare = fare
+
+    @property
+    def how_long(self):
+        """
+        Вычисляет время прохождения маршрута по формуле max_speed/(4*path)
+        """
+        return self.max_speed/(4.0 * self.path)
 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
