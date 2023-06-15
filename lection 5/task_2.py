@@ -10,11 +10,8 @@ def repeats(our_str):
     new_str = ''
     letters_dict = {}
     for letter in our_str:
-        if letter in letters_dict:
-            letters_dict[letter] += 1
-        else:
-            letters_dict[letter] = 1
-        new_str += letter + '_' + str(letters_dict[letter])
+        letters_dict[letter] = letters_dict[letter] + 1 if letters_dict.get(letter, False) else 1
+        new_str += f'{letter}_{letters_dict[letter]}'
     return new_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

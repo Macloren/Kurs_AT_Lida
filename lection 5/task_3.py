@@ -27,7 +27,7 @@ def everything_for_your_cat(cats_data):
             dict_cat[key] += '; '
         else:
             dict_cat[key] = ''
-        dict_cat[key] += cat[0] + ', ' + str(cat[1])
+        dict_cat[key] += f'{cat[0]}, {cat[1]}'
     for item in dict_cat.items():
         our_str += item[0] + ': ' + item[1] + '\n'
     return our_str

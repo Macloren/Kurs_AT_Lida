@@ -8,11 +8,9 @@
 
 def letter_stat(our_str):
     letters_dict = {}
+
     for letter in our_str:
-        if letter in letters_dict:
-            letters_dict[letter] += 1
-        else:
-            letters_dict[letter] = 1
+        letters_dict[letter] = letters_dict[letter] + 1 if letters_dict.get(letter, False) else 1
     return letters_dict
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
