@@ -18,20 +18,16 @@ class Segment:
         """
         Вычисляет длину отрезка по координатам с округлением до двух знаков.
         """
-        x1, y1 = self.point1
-        x2, y2 = self.point2
-        return round(((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5, 2)
+        return round(((self.point2[0] - self.point1[0]) ** 2 + (self.point2[1] - self.point1[1]) ** 2) ** 0.5, 2)
 
     def x_axis_intersection(self):
         """
         Вычисляет есть ли пересечения с осью абсцисс.
         Возвращает True, если пересечение есть, иначе False.
         """
-        x1, y1 = self.point1
-        x2, y2 = self.point2
-        if y1 == 0 and y2 == 0:
+        if self.point1[1] == 0 and self.point2[1] == 0:
             return False
-        if y1 * y2 < 0:
+        if self.point1[1] * self.point2[1] < 0:
             return True
         return False
 
@@ -40,11 +36,9 @@ class Segment:
         Вычисляет есть ли пересечения с осью ординат.
         Возвращает True, если пересечение есть, иначе False.
         """
-        x1, y1 = self.point1
-        x2, y2 = self.point2
-        if x1 == 0 and x2 == 0:
+        if self.point1[0] == 0 and self.point2[0] == 0:
             return False
-        if x1 * x2 < 0:
+        if self.point1[0] * self.point2[0] < 0:
             return True
         return False
 

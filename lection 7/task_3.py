@@ -46,7 +46,7 @@ class PublicTransport:
 
 class Bus(PublicTransport):
     def __init__(self, brand, engine_power, year, color, max_speed, passengers, park, fare):
-        super(Bus, self).__init__(brand, engine_power, year, color, max_speed)
+        super().__init__(brand, engine_power, year, color, max_speed)
         self.passengers = passengers
         self.__park = park
         self._fare = fare
@@ -69,7 +69,7 @@ class Bus(PublicTransport):
 
 class Tram(PublicTransport):
     def __init__(self, brand, engine_power, year, color, max_speed, route, path, fare):
-        super(Tram, self).__init__(brand, engine_power, year, color, max_speed)
+        super().__init__(brand, engine_power, year, color, max_speed)
         self.__route = route
         self.path = path
         self._fare = fare
