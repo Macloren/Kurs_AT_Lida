@@ -30,7 +30,33 @@
 # help(func1) должен выводит одинаковый текст, когда есть декоратор на функции func1 и когда его нет
 # Реализовать без подключения новых модулей и сторонних библиотек.
 
-
-import datetime
-
 # Здесь пишем код
+import datetime
+import time
+
+
+def func_log(file_log='log.txt'):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            now = datetime.datetime.now()
+            msg = func.__name__ + ' вызывана ' + now.strftime('%d.%m %H:%M:%S') + '\n'
+            with open(file_log, 'a', encoding='utf-8') as file:
+                file.write(msg)
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+
+@func_log()
+def func1():
+    time.sleep(3)
+
+
+@func_log(file_log='func2.txt')
+def func2():
+    time.sleep(5)
+
+
+func1()
+func2()
+func1()

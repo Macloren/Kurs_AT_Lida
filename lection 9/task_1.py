@@ -4,7 +4,15 @@
 
 
 # Здесь пишем код
+source_file = open("test_file/task1_data.txt", mode='r', encoding='utf-8')
+resulting_file = open("test_file/task1_answer.txt", mode='w', encoding='utf-8')
 
+for line in source_file.read():
+    result = ''.join(i for i in line if not i.isdigit())
+    resulting_file.write(result)
+
+source_file.close()
+resulting_file.close()
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
 
