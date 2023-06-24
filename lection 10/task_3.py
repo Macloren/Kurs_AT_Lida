@@ -12,5 +12,16 @@ def all_division(*arg1):
     return division
 
 
-
+@pytest.mark.parametrize('test_data, result', [
+    pytest.param((100, 50), 2, marks=pytest.mark.smoke('smoke test')),
+    pytest.param((30, 6, 2), 2.5, marks=pytest.mark.skip('skipped test')),
+    ((99999, 521, 10, -245), -0.07834149398723021),
+    ((99, 0), 'division by zero'),
+    (('a', 'b'), "unsupported operand type(s) for /=: 'str' and 'str'")
+])
+def test_division(test_data, result):
+    try:
+        assert all_division(*test_data) == result
+    except Exception as error:
+        assert error.args[0] == result
 
