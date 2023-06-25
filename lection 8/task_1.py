@@ -28,9 +28,9 @@ def treatment_sum(our_turple: tuple):
     :return: our_turple[0] + our_turple[1]: сумма чисел
     :return: сообщение сработанного исключения
     """
+    if len(our_turple) > 2:
+        raise Exception('Много данных')
     try:
-        if len(our_turple) > 2:
-            raise Exception('Много данных')
         return our_turple[0] + our_turple[1]
     except TypeError:
         return 'Нельзя сложить эти данные'

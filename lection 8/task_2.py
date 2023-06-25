@@ -18,6 +18,7 @@ import unittest  # Не удалять
 
 class Trigon:
     def __init__(self, *side):
+
         """
         Метод инициализации класса Trigon
         при инициализации происходит проверка на корректность переданных данных.
@@ -31,13 +32,13 @@ class Trigon:
         if len(side) != 3:
             raise IndexError(f'Передано {len(side)} аргументов, а ожидается 3')
         try:
-            a, b, c = sorted(side)
-            if any(number <= 0 for number in (a, b, c)):
-                raise ValueError('Стороны должны быть положительными')
-            elif a + b <= c:
-                raise Exception('Не треугольник')
+            self.a, self.b, self.c = [int(val) for val in sorted(side)]
         except TypeError:
             raise TypeError('Стороны должны быть числами')
+        if any(number <= 0 for number in (self.a, self.b, self.c)):
+            raise ValueError('Стороны должны быть положительными')
+        elif self.a + self.b <= self.c:
+            raise Exception('Не треугольник')
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
